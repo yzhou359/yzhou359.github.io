@@ -1,2 +1,676 @@
-hello world
-video reenact
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>VisemeNet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link media="all" href="style.css" type="text/css" rel="stylesheet">
+<style type="text/css" media="all">
+img {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 10px;
+	FLOAT: right;
+	PADDING-BOTTOM: 10px;
+	PADDING-TOP: 10px
+}
+#content {
+	MARGIN-LEFT: auto;
+ WIDTH: expression(document.body.clientWidth > 925? "925px": "auto" );
+	MARGIN-RIGHT: auto;
+	TEXT-ALIGN: left;
+	max-width: 925px
+}
+body {
+	TEXT-ALIGN: center
+}
+</style>
+</head>
+<body>
+<div id="content">
+  <h1 align="center">Audio-driven Neural Gesture Reenactment with Video Motion Graphs</h1>
+  <div align="center">
+  <ul id="people" align="center">
+    <a href="http://people.umass.edu/~yangzhou/">Yang Zhou</a> <a>, </a>
+    <a href="https://research.adobe.com/person/jimei-yang/">Jimei Yang</a> <a>, </a>
+    <a href="https://dingzeyu.li/">Dingzeyu Li</a> <a>, </a>
+    <a href="https://research.adobe.com/person/jun-saito/">Jun Saito</a> <a>, </a>
+    <a href="https://research.adobe.com/person/deepali-aneja/">Deepali Aneja</a> <a>, </a>
+    <a href="http://people.cs.umass.edu/~kalo/">Evangelos Kalogerakis</a> <a>, </a>
+  </ul>
+</div>
+
+  <p align="center"><i>CVPR 2022</i></p>
+
+  <img src="teaser.png" width="925" align="center" style="padding: 0px 0px 20px 20px">
+
+  <h2>Abstract</h2>
+  <p align="justify">Human speech is often accompanied by body gestures including arm and hand gestures. We present a method
+that reenacts a high-quality video with gestures matching a target speech audio. The key idea of our method is to
+split and re-assemble clips from a reference video through a novel video motion graph encoding valid transitions
+between clips. To seamlessly connect different clips in the reenactment, we propose a pose-aware video blending
+network which synthesizes video frames around the stitched frames between two clips. Moreover, we developed an
+audio-based gesture searching algorithm to find the optimal order of the reenacted frames. Our system generates reenactments
+that are consistent with both the audio rhythms and the speech content. We evaluate our synthesized
+video quality quantitatively, qualitatively, and with user studies, demonstrating that our method produces videos of
+much higher quality and consistency with the target audio compared to previous work and baselines. </p>
+
+<br><br><br>
+  <img src="overview.png" width="925" align="center" style="padding: 0px 0px 20px 20px">
+  <p align="justify">System overview. The reference video is first encoded into a directed graph where nodes represent video frames and audio
+features, and edges represent transitions. The transitions include original ones between consecutive reference frames, and synthetic ones
+between disjoint frames. Given a unseen target audio at test time, a beam search algorithm finds plausible playback paths such that gestures
+best match the target speech audio. Synthetic transitions along disjoint frames are neurally blended to achieve temporal consistency.</p>
+
+<table style='width:60%;text-align:center' border="0">
+	<colgroup>
+    <col width="5%"><col width="5%">
+    <col width="5%"><col width="5%">
+    <col width="5%"><col width="5%">
+    <col width="5%"><col width="5%">
+    <col width="5%"><col width="5%">
+    <col width="5%"><col width="5%">
+	</colgroup>
+
+	<tr><td align=left colspan=12> <h2>1. Reenacted Video Results</h2> </td></tr>
+
+	<tr><td align=left colspan=12><p>Example 1: our system reenacts the reference video with target speech audio.</p></td></tr>
+	
+	<tr>
+		<td colspan=4>
+			<video id="video" width=300 controls>
+		         <source src="src/01_firstglance/ref_a.mp4" type="video/mp4" />
+		         Your browser does not support the video element.
+		     </video>		
+		</td>
+		<td> +		
+		</td>
+		<td colspan=2>
+			<audio id="audio" width=128  controls>
+		         <source src="src/01_firstglance/b.wav" type="audio/wav" />
+		         Your browser does not support the audio element.
+		     </audio>		
+		</td>
+		<td> =
+		</td>
+		<td colspan=4>
+			<video id="video" width=300 controls>
+		         <source src="src/01_firstglance/a2b.mp4" type="video/mp4" />
+		         Your browser does not support the video element.
+		     </video>		
+		</td>
+	</tr>	
+	<tr>
+		<td colspan=4> <b>Reference Video</b> - Speaker A<br>(a short sample clip)</td>
+		<td></td>
+		<td colspan=2> <b>Target Audio</b> - Speaker B</td>
+		<td></td>
+		<td colspan=4> <b>Reenacted Video</b> - A's appearance + B's voice</td>
+	</tr>		
+
+
+	<tr><td align=left colspan=12><p>Example 2: reenacted results on TED-talks speaker.</p></td></tr>
+	
+	<tr>
+		<td colspan=4>
+			<video id="video" width=300 controls>
+		         <source src="src/01_firstglance/g.mp4" type="video/mp4" />
+		         Your browser does not support the video element.
+		     </video>		
+		</td>
+		<td> +		
+		</td>
+		<td colspan=2>
+			<audio id="audio" width=128  controls>
+		         <source src="src/01_firstglance/g_a.wav" type="audio/wav" />
+		         Your browser does not support the audio element.
+		     </audio>		
+		</td>
+		<td> =
+		</td>
+		<td colspan=4>
+			<video id="video" width=300 controls>
+		         <source src="src/01_firstglance/g2g.mp4" type="video/mp4" />
+		         Your browser does not support the video element.
+		     </video>		
+		</td>
+	</tr>	
+	<tr>
+		<td colspan=4> <b>Reference Video</b> - Speaker II<br>(a short sample clip)</td>
+		<td></td>
+		<td colspan=2> <b>Target Audio</b></td>
+		<td></td>
+		<td colspan=4> <b>Reenacted Video</b> - Reenacted Speaker II's video</td>
+	</tr>				
+</table>
+
+
+	<br><br>
+	<table style='width:60%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>2. Our Blended Playback vs. Direct Playback</h2> 
+		<p>We show the GIF result for Fig.3 in the main paper (played in 3x slow motion).</p> </td></tr>
+
+		<tr>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/in0_r.gif" alt="Input video sequence 1">	
+			</td>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/in1_r.gif" alt="Input video sequence 2">	
+			</td>
+			<td colspan=1><p style="font-size:48px">&#8594;</p></td>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/direct_r.gif" alt="Direct Playback">	
+			</td>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/ours_r.gif" alt="Blended Playback">	
+			</td>
+		</tr>	
+		<tr>
+			<td colspan=1>Input Sequence 1</td>
+			<td colspan=1>Input Sequence 2</td>
+			<td></td>
+			<td colspan=1>
+			<div>Direct Playback</div>
+			<div>(notice the temporal jitter in the middle)</div></td>
+			<td colspan=1>
+			<div>Blended Playback</div>
+			<div>(ours seamless blended result)</div></td>
+		</tr>
+
+		<tr><td align=left colspan=12> 
+		<p>Another example on TED-talks dataset.</p>
+		</td></tr>
+
+		<tr>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/ted_in1.gif" alt="Input video sequence 1">	
+			</td>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/ted_in2.gif" alt="Input video sequence 2">	
+			</td>
+			<td colspan=1><p style="font-size:48px">&#8594;</p></td>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/ted_direct.gif" alt="Direct Playback">	
+			</td>
+			<td colspan=1>
+			     <img width=200 src="src/04_comp_to_direct_blend/ted_o.gif" alt="Blended Playback">	
+			</td>
+		</tr>	
+		<tr>
+			<td colspan=1>Input Sequence 1</td>
+			<td colspan=1>Input Sequence 2</td>
+			<td></td>
+			<td colspan=1>
+			<div>Direct Playback</div>
+			<div>(notice the temporal jitter in the middle)</div></td>
+			<td colspan=1>
+			<div>Blended Playback</div>
+			<div>(ours seamless blended result)</div></td>
+		</tr>
+	</table>
+
+	<br><br>
+	<table style='width:100%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>3. Alternative Transitions on Video Motion Graph</h2> 
+		<p>Given the same input sequence, we show alternative transitions searched by proposed video motion graph (see Sec. 3.1).</p> </td></tr>
+
+		<tr>
+			<td colspan=12>
+			     <img width="100%" src="src/09_alter_edges/o1.gif" alt="Input video sequence 1">	
+			</td>
+			<!-- <td colspan=2>
+			     <img width=250 src="src/04_comp_to_direct_blend/in1_r.gif" alt="Input video sequence 2">	
+			</td>
+			<td colspan=1><p style="font-size:48px">&#8594;</p></td>
+			<td colspan=3>
+			     <img width=250 src="src/04_comp_to_direct_blend/direct_r.gif" alt="Direct Playback">	
+			</td>
+			<td colspan=3>
+			     <img width=250 src="src/04_comp_to_direct_blend/ours_r.gif" alt="Blended Playback">	
+			</td> -->
+		</tr>	
+		<tr>
+			<td colspan=4>Same Input Sequence A</td>
+			<td colspan=4>Searched Alternative Sequence B1</td>
+			<td colspan=4><div>Our Synthesized Blended Playback A &#8594; B1</div></td>
+		</tr>
+		<tr>
+			<td colspan=12>
+			     <img width="100%" src="src/09_alter_edges/o3.gif" alt="Input video sequence 1">	
+			</td>
+			<!-- <td colspan=2>
+			     <img width=250 src="src/04_comp_to_direct_blend/in1_r.gif" alt="Input video sequence 2">	
+			</td>
+			<td colspan=1><p style="font-size:48px">&#8594;</p></td>
+			<td colspan=3>
+			     <img width=250 src="src/04_comp_to_direct_blend/direct_r.gif" alt="Direct Playback">	
+			</td>
+			<td colspan=3>
+			     <img width=250 src="src/04_comp_to_direct_blend/ours_r.gif" alt="Blended Playback">	
+			</td> -->
+		</tr>	
+		<tr>
+			<td colspan=4>Same Input Sequence A</td>
+			<td colspan=4>Searched Alternative Sequence B2</td>
+			<td colspan=4><div>Our Synthesized Blended Playback A &#8594; B2</div></td>
+		</tr>
+
+		<!-- <tr><td align=left colspan=12> 
+		<p>For reference, check the original full video here.</p>
+		</td></tr> -->
+
+		
+	</table>
+
+	<br><br>
+	<table style='width:100%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>4. Alternative Reenacted Results from Beam Search</h2> </td></tr>
+
+		<tr><td align=left colspan=12><p>Given a reference video and a target audio, our system can synthesize alternative reenacted results from different paths in the motion graph. Specifically, we select the most plausible <i>K</i> paths found by beam search described in Section 3.3.</p></td></tr>
+
+		<tr>
+			<td colspan=1>
+				<div>
+			     <video width=250 src="src/02_variants/ref_d.mp4" controls>	
+			     </div>
+			     <div>Reference Video</div>
+			     <div>
+			     <audio width=100 src="src/02_variants/target_a.wav" controls>	
+			     </div>
+			     <div>Reference Audio</div>
+			</td>
+			
+			<td colspan=1>
+				<p style="font-size:48px">&#8594;</p>
+			</td>
+			<td colspan=1>
+			     <div>
+			     <video width=200 src="src/02_variants/k0.mp4" controls>	
+			     </div>
+			     <div>Result from Searched Path 1</div>
+			     <div>
+			     <video width=200 src="src/02_variants/k3.mp4" controls>	
+			     </div>
+			     <div>Result from Searched Path 4</div>
+			</td>
+			<td colspan=1>
+			     <div>
+			     <video width=200 src="src/02_variants/k1.mp4" controls>	
+			     </div>
+			     <div>Result from Searched Path 2</div>
+			     <div>
+			     <video width=200 src="src/02_variants/k4.mp4" controls>	
+			     </div>
+			     <div>Result from Searched Path 5</div>
+			</td>
+			<td colspan=1>
+			     <div>
+			     <video width=200 src="src/02_variants/k2.mp4" controls>	
+			     </div>
+			     <div>Result from Searched Path 3</div>
+			     <div>
+			     <video width=200 src="src/02_variants/k7.mp4" controls>	
+			     </div>
+			     <div>Result from Searched Path 6</div>
+			</td>
+			
+		</tr>	
+	</table>
+
+	<br><br>	
+	<table style='width:62%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+
+        <col width="1%">
+
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+
+        <col width="1%">
+
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=14> <h2>5. Comparison: Ours vs. GT</h2> </td></tr>
+
+		<tr><td align=left colspan=14>
+		<p>Below we show several videos either from <b>our reenacted results</b> or <b>ground-truth videos</b>.<br>Please play each video first and then click the caption below to check the answer!</p>
+		</td></tr>
+		
+		<tr>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/01.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+			<td> 		
+			</td>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/02.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>			
+			</td>
+			<td> 
+			</td>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/03.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+		</tr>	
+		<tr>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+			<td></td>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+			<td></td>
+			<td colspan=4 ><p onclick="myFunction(this, 'GT Video')">&#8593; Click to show answer! &#8593;</p></td>
+		</tr>	
+		<tr>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/04.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+			<td> 		
+			</td>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/05.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>			
+			</td>
+			<td> 
+			</td>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/06.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+		</tr>	
+		<tr>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+			<td></td>
+			<td colspan=4 ><p onclick="myFunction(this, 'GT Video')">&#8593; Click to show answer! &#8593;</p></td>
+			<td></td>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+		</tr>	
+		<tr>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/07.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+			<td> 		
+			</td>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/08.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>			
+			</td>
+			<td> 
+			</td>
+			<td colspan=4>
+				<video id="video" width=300 controls>
+			         <source src="src/05_vs_gt/09.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+		</tr>	
+		<tr>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+			<td></td>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+			<td></td>
+			<td colspan=4 ><p onclick="myFunction(this, 'Our Result')">&#8593; Click to show answer! &#8593;</p></td>
+		</tr>	
+	</table>
+
+
+	<br><br>
+	<table style='width:100%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>6. Comparison: Ours vs. Other SOTA Methods for Video Synthesis Results</h2> </td></tr>
+
+		<tr><td align=left colspan=12><p>Here we show the video results for Fig.6 in the main paper. The videos have no sound.</p></td></tr>
+		
+		<tr>
+			<td width="10%" colspan=1></td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8595; <b>GT</b> &#8595; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8595; FeatureFlow[25] &#8595; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8595; SuperSlMo[32] &#8595; </td>
+		</tr>
+		<tr>
+			<td width="10%" colspan=1 style="font-size:20px">Example 1</td>
+			<td colspan=11>
+				<video id="video" width=100% controls>
+			         <source src="src/07_vqa_test/a.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+		</tr>	
+		<tr>
+			<td width="10%" colspan=1></td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8593; <b>Ours</b> &#8593; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8593; vUnet[22] &#8593; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8593; EBDance[16] &#8593; </td>
+		</tr>
+
+		<tr><td>&#8209;</td></tr>
+
+		<tr>
+			<td width="10%" colspan=1></td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8595; <b>GT</b> &#8595; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8595; FeatureFlow[25] &#8595; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8595; SuperSlMo[32] &#8595; </td>
+		</tr>
+		<tr>
+			<td width="10%" colspan=1 style="font-size:20px">Example 2</td>
+			<td colspan=11>
+				<video id="video" width=100% controls>
+			         <source src="src/07_vqa_test/b.mp4" type="video/mp4" />
+			         Your browser does not support the video element.
+			     </video>		
+			</td>
+		</tr>	
+		<tr>
+			<td width="10%" colspan=1></td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8593; <b>Ours</b> &#8593; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8593; vUnet[22] &#8593; </td>
+			<td width="30%" colspan=1 style="font-size:20px">&#8593; EBDance[16] &#8593; </td>
+		</tr>		
+	</table>
+
+	<br><br>
+	<table style='width:100%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>7. Comparison: Blended Playback by Ours vs. Other SOTA Methods</h2> </td></tr>
+
+		<tr><td align=left colspan=16><p>We compare our pose-aware blending network and other state-of-the-art methods for synthesizing blended frames around transition points (shown  in GIF results played in 3x slow motion).</p></td></tr>
+
+		<tr>
+			<td colspan=3>
+				<div>
+			     <img width=200 src="src/08_vqa_blend/in0_a.gif" alt="Input video sequence 1">	
+			     </div>
+			     <div>Input Sequence 1</div>
+			     <div>
+			     <img width=200 src="src/08_vqa_blend/in1_a.gif" alt="Input video sequence 1">	
+			     </div>
+			     <div>Input Sequence 2</div>
+			</td>
+			<td colspan=1>
+				<p style="font-size:48px">&#8594;</p>
+			</td>
+			<td colspan=4>
+			     <div>
+			     <img width=200 src="src/08_vqa_blend/ff_a.gif" alt="Input video sequence 1">	
+			     </div>
+			     <div>FeatureFlow[25]</div>
+			     <div>
+			     <img width=200 src="src/08_vqa_blend/vunet_a.gif" alt="Input video sequence 1">	
+			     </div>
+			     <div>vUnet[22]</div>
+			</td>
+			<td colspan=4>
+			     <div>
+			     <img width=200 src="src/08_vqa_blend/slo_a.gif" alt="Input video sequence 1">	
+			     </div>
+			     <div>SuperSlMo[32]</div>
+			     <div>
+			     <img width=200 src="src/08_vqa_blend/ebd_a.gif" alt="Input video sequence 1">	
+			     </div>
+			     <div>EBDance[16]</div>
+			</td>
+			<td colspan=4>
+			     <img width=200 src="src/08_vqa_blend/ours_a.gif" alt="Blended Playback">	
+			     <div><b>Ours</b></div>
+			</td>
+		</tr>	
+	</table>
+
+	<br><br>
+	<table style='width:100%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>8. Limitation</h2> 
+		<p>Our video blending network can blend the foreground human poses and slight background changes, but it fails on considerably changed backgrounds.</p> </td></tr>
+
+		<tr>
+			<td colspan=3>
+			     <img width=280 src="src/10_limitation/in1.gif" alt="Input video sequence 1">	
+			</td>
+			<td colspan=3>
+			     <img width=280 src="src/10_limitation/in2.gif" alt="Input video sequence 2">	
+			</td>
+			<td colspan=3><p style="font-size:48px">&#8594;</p></td>
+			<td colspan=3>
+			     <img width=280 src="src/10_limitation/o.gif" alt="Direct Playback">	
+			</td>
+		</tr>	
+		<tr>
+			<td colspan=3>Input Sequence 1</td>
+			<td colspan=3>Input Sequence 2</td>
+			<td colspan=3></td>
+			<td colspan=3>
+			<div>Blended Playback</div>
+			<div>Limitation: background cannot be blended smoothly when it changes considerably.</div></td>
+		</tr>
+		<tr><td align=left colspan=12><p>Besides, our video blending results are also affected by the off-the-shelf motion capture method [72]. If the captured SMPL model is not accurate, e.g. the limbs, fingers are not well-aligned with image, our blending network which utilizes the foreground image warping based on the captured mesh may not achieve the best performance.</p></td></tr>
+
+		
+	</table>
+
+  <br>
+  <h2>Paper</h2>
+  <a href="video_reenact.pdf"><img style="padding: 10px 10px 10px 10px; box-shadow:4px 4px 8px #000; float: right" width="150" src="thumbnail.png"></a>
+    <br><br><br>
+  <a href="video_reenact.pdf">VideoReenact.pdf</a>, 9.4MB<br>
+  <a href="video_reenact_supp.pdf">VideoReenact_Supp.pdf</a>, 9.4MB<br>
+  <br>
+  <h3>Citation</h3>
+  <p>Yang Zhou, Jimei Yang, Dingzeyu Li, Jun Saito, Deepali Aneja, Evangelos Kalogerakis, &quot;Audio-driven Neural Gesture Reenactment with Video Motion Graphs&quot;, <em>CVPR 2022</em>
+    <!-- <a href="bibtex.txt">Bibtex</a> </p> -->
+
+  <br><br><br><br><br>
+  <h2>Video</h2>
+  <br>
+  <p>Coming soon.</p>
+  <!-- <p><video width="925" controls>  <source src="visemenet_video.mp4" type="video/mp4"></video></p> -->
+  
+  <h2>Presentation</h2>
+  <p>Coming soon!<br>   
+     
+  <h2> Source Code & Data</h2>
+  <p>Coming soon!</p>
+
+  <br><br>
+	<table style='width:100%;text-align:center' border="0">
+		<colgroup>
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+        <col width="5%"><col width="5%">
+    	</colgroup>
+
+		<tr><td align=left colspan=12> <h2>References</h2> 
+		<p>[16] Caroline Chan, Shiry Ginosar, Tinghui Zhou, and Alexei A Efros. Everybody dance now. In Proc. ICCV, 2019. </p>
+		<p>[22] Patrick Esser, Ekaterina Sutter, and Björn Ommer. A variational u-net for conditional appearance and shape generation. In Proc. CVPR, 2018. </p>
+		<p>[25] Shurui Gui, Chaoyue Wang, Qihua Chen, and Dacheng Tao. Featureflow: robust video interpolation via structure-to-texture generation. In Proc. CVPR, 2020. </p>
+		<p>[32] Huaizu Jiang, Deqing Sun, Varun Jampani, Ming-Hsuan Yang, Erik Learned-Miller, and Jan Kautz. Super slomo: High quality estimation of multiple intermediate frames for video interpolation. In Proc. CVPR, 2018. </p>
+		<p>[72] Donglai Xiang, Hanbyul Joo, and Yaser Sheikh. Monocular total capture: Posing face, body, and hands in the wild. In Proc. CVPR, 2019. </p>
+		<p style="font-size:12px"><i>**Note: reference indices are same to the ones used in the main paper.</i></p>
+		</td></tr>
+
+	</table>	
+
+  <h2> Acknowledgements </h2>
+  <p>We acknowledge support from NSF (EAGER-1942069) and Adobe.</p>
+</div>
+
+<script>
+	function myFunction(elmnt,clr) {
+	  elmnt.innerHTML = clr;
+	}
+	</script>
+</body>
+</html>
