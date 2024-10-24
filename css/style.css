@@ -21,6 +21,9 @@ body {
     body {
       font-size: 16px; } }
 
+table.imgtable {
+  margin-top: 12px; /* Adjust the value as needed */
+    }
 a {
   color: #2c98f0;
   -webkit-transition: 0.5s;
