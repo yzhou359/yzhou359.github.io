@@ -120,10 +120,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					</div>
 					<div class="row">
 						<div class="" data-animate-effect="fadeInLeft">
-							<div class="blog-entry" style="width: 80%;">
-								<div class="news" style="margin-left: 20px">
-									<p>&#9658; <span>[NEW!]</span> [Feb 2025] 4 papers accepted by CVPR 2025. 1 paper accepted by CVPR 2025 CVEU workshop.</p>
-								</div>
+								<div class="blog-entry" style="width: 80%;">
+									<div class="news" style="margin-left: 20px">
+										<p>&#9658; <span>[NEW!]</span> [Feb 2026] 1 paper accepted by EG 2026.</p>
+									</div>
+									<div class="news" style="margin-left: 20px">
+										<p>&#9658; [Oct. 2025] 3 papers accepted by ICCV 2025.</p>
+									</div>
+									<div class="news" style="margin-left: 20px">
+										<p>&#9658; [July 2025] 1 paper accepted by SIGGRAPH 2025.</p>
+									</div>
+									<div class="news" style="margin-left: 20px">
+										<p>&#9658; <span>[NEW!]</span> [Feb 2025] 4 papers accepted by CVPR 2025. 1 paper accepted by CVPR 2025 CVEU workshop.</p>
+									</div>
 								<div class="news" style="margin-left: 20px">
 									<p>&#9658; <span>[NEW!]</span> [Feb 2025] Promoted to Senior Research Scientist at Adobe Research!</p>
 								</div>
@@ -133,12 +142,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="news" style="margin-left: 20px">
 									<p>&#9658; [July 2024] 2 papers accepted by ECCV 2024.</p>
 								</div>
-								<div class="news" style="margin-left: 20px">
-									<p>&#9658; [Jan. 2024] 1 papers accepted by 3DV 2024.</p>
-								</div>
-								<div class="news" style="margin-left: 20px">
-									<p>&#9658; [Nov. 2023] Our video super-resolution project <a href="">#ProjResUp</a> was presented at Adobe Max 2023 (Sneak Peak) <a href="https://www.youtube.com/watch?v=MnOVEcst_U4&themeRefresh=1">[Youtube Link]</a> <a href="https://www.theverge.com/2023/10/11/23912480/adobe-max-sneak-project-resup-ai-video-upscaling-preview">[Press]</a></p>
-								</div>
+									<div class="news" style="margin-left: 20px">
+										<p>&#9658; [Jan. 2024] 1 papers accepted by 3DV 2024.</p>
+									</div>
+									<div style="margin-left: 20px; margin-bottom: 15px;">
+										<p id="olderNewsToggle" onclick="toggleOlderNews()" style="cursor: pointer; color: #2c98f0; margin-bottom: 0;">See more earlier updates...</p>
+									</div>
+									<div id="olderNewsSection" style="display: none;">
+									<div class="news" style="margin-left: 20px">
+										<p>&#9658; [Nov. 2023] Our video super-resolution project <a href="">#ProjResUp</a> was presented at Adobe Max 2023 (Sneak Peak) <a href="https://www.youtube.com/watch?v=MnOVEcst_U4&themeRefresh=1">[Youtube Link]</a> <a href="https://www.theverge.com/2023/10/11/23912480/adobe-max-sneak-project-resup-ai-video-upscaling-preview">[Press]</a></p>
+									</div>
 								<div class="news" style="margin-left: 20px">
 									<p>&#9658; [Nov. 2023] Our paper 3D generation foundation model "LRM: Large Reconstruction Model for Single Image to 3D" has been accepted by ICLR 2023.</p>
 								</div>
@@ -184,12 +197,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="desc" style="margin-left: 20px">
 									<p>&#9658; [Jun. 2018] Joined Wayfair Next Research as a summer intern and fall co-op intern.</p>
 								</div>
-								<div class="desc" style="margin-left: 20px">
-									<p>&#9658; [Apr. 2018] Our paper <a href="#VisemeNet">VisemeNet</a> accepted by SIGGRAPH 2018. <a href="https://www.youtube.com/watch?v=kk2EnyMD3mo">[Video]</a></p>
+									<div class="desc" style="margin-left: 20px">
+										<p>&#9658; [Apr. 2018] Our paper <a href="#VisemeNet">VisemeNet</a> accepted by SIGGRAPH 2018. <a href="https://www.youtube.com/watch?v=kk2EnyMD3mo">[Video]</a></p>
+									</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 				</div>
 			</section>
 
@@ -205,12 +219,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-12">
 				         <div class="timeline-centered">.
 
-								<h2>Video Generation and Visual Effects 
-									<!-- <span onclick="toggleSection()" style="font-size: 12px;">Show/Hide Content</span> -->
-								</h2>
+									<h2>Video Generation and Visual Effects 
+										<!-- <span onclick="toggleSection()" style="font-size: 12px;">Show/Hide Content</span> -->
+									</h2>
 
-								<table id="toggleSection" class="imgtable"><tbody><tr><td>
-									<img src="https://relic-worldmodel.github.io/figures/overview.png" alt="RELIC teaser" width="240px" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<table id="toggleSection" class="imgtable"><tbody><tr><td>
+										<img src="https://cvlab-kaist.github.io/WorldCam/static/images/method/architecture.png" alt="WorldCam teaser" width="240px" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+										<td align="left"><b style="font-size:100%">
+											  <a href="https://cvlab-kaist.github.io/WorldCam/">WorldCam: Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a Unifying Geometric Representation</a></b> 
+											  <br>
+											  Jisu Nam, Yicong Hong, Chun-Hao Paul Huang, Feng Liu, JoungBin Lee, Jiyoung Kim, Siyoon Jin, Yunsung Lee, Jaeyoon Jung, Suhwan Choi, Seungryong Kim, Yang Zhou
+											  <br>
+												<i>Arxiv 2026</i>
+											  <br>
+												<a href="https://arxiv.org/pdf/2603.16871">PDF</a>&nbsp;&nbsp;
+												<a href="https://cvlab-kaist.github.io/WorldCam/">Project</a>&nbsp;&nbsp
+										</td></tr></tbody>
+									</table>
+
+									<table id="toggleSection" class="imgtable"><tbody><tr><td>
+										<img src="https://relic-worldmodel.github.io/figures/overview.png" alt="RELIC teaser" width="240px" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
 									<td align="left"><b style="font-size:100%">
 										  <a href="https://relic-worldmodel.github.io/">RELIC: Interactive Video World Model with Long-Horizon Memory</a></b> 
@@ -622,12 +651,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-							<h2 style="margin-top: 50px;">3D Object and Scene Synthesis 
-								<!-- <span onclick="toggleSection()" style="font-size: 12px;">Show/Hide Content</span> -->
-							</h2>
+								<h2 style="margin-top: 50px;">3D Object and Scene Synthesis 
+									<!-- <span onclick="toggleSection()" style="font-size: 12px;">Show/Hide Content</span> -->
+								</h2>
 
-								<table class="imgtable"><tbody><tr><td>
-									<img src="https://sonsang.github.io/dmesh2-project/static/images/teaser_low.jpg" alt="DMesh++ teaser" width="240px" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<table class="imgtable"><tbody><tr><td>
+										<img src="images/dmesh.png" alt="DMesh teaser" width="240px" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+										<td align="left"><b style="font-size:100%">
+											  <a href="https://sonsang.github.io/dmesh-project/">DMesh: A Differentiable Mesh Representation</a></b> 
+											  <br>
+											  Sanghyun Son, Matheus Gadelha, Yang Zhou, Zexiang Xu, Ming Lin, Yi Zhou
+											  <br>
+												<i>NeurIPS 2024</i>
+											  <br>
+												<a href="https://arxiv.org/abs/2404.13445">PDF</a>&nbsp;&nbsp;
+												<a href="https://sonsang.github.io/dmesh-project/">Project</a>&nbsp;&nbsp
+										</td></tr></tbody>
+									</table>
+
+									<table class="imgtable"><tbody><tr><td>
+										<img src="https://sonsang.github.io/dmesh2-project/static/images/teaser_low.jpg" alt="DMesh++ teaser" width="240px" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
 									<td align="left"><b style="font-size:100%">
 										  <a href="https://sonsang.github.io/dmesh2-project/">DMesh++: An Efficient Differentiable Mesh for Complex Shapes</a></b> 
