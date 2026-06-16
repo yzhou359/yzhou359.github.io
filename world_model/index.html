@@ -9,7 +9,7 @@
       content="Interactive presentation deck introducing Yang Zhou's research trajectory, selected work, WorldCam, and future work on video world models."
     >
     <link rel="preload" href="assets/ppt_cover_portrait.jpeg" as="image">
-    <link rel="stylesheet" href="styles.css?v=20260616-world-state-credit-v1">
+    <link rel="stylesheet" href="styles.css?v=20260616-engine-host-wide-v1">
   </head>
   <body>
     <main class="deck" aria-label="Yang Zhou research interview presentation">
@@ -27,19 +27,19 @@
             <span>02</span>
             <small>Trajectory</small>
           </button>
-          <button class="rail-item" data-jump="9">
+          <button class="rail-item" data-jump="8">
             <span>03</span>
             <small>WorldCam</small>
           </button>
-          <button class="rail-item" data-jump="15">
+          <button class="rail-item" data-jump="12">
             <span>04</span>
             <small>Future</small>
           </button>
-          <button class="rail-item" data-jump="19">
+          <button class="rail-item" data-jump="17">
             <span>05</span>
             <small>Vision</small>
           </button>
-          <button class="rail-item" data-jump="20">
+          <button class="rail-item" data-jump="18">
             <span>06</span>
             <small>Q&amp;A</small>
           </button>
@@ -52,7 +52,7 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.7 12 4l8 6.7v8.8a.5.5 0 0 1-.5.5h-5v-6h-5v6h-5a.5.5 0 0 1-.5-.5v-8.8Z"/></svg>
           </a>
         </div>
-        <div class="rail-count"><span id="currentSlide">1</span><span>/</span><span id="totalSlides">21</span></div>
+        <div class="rail-count"><span id="currentSlide">1</span><span>/</span><span id="totalSlides">19</span></div>
       </aside>
 
       <section class="stage" aria-live="polite">
@@ -88,15 +88,34 @@
                 <div class="eyeless-label">Identity</div>
                 <h2>Beyond Pixel Generation</h2>
                 <div class="claim-list labeled-claims">
-                  <div><strong>Research Interest</strong><span>Working on Generative AI for videos, including video generation, VFX, digital avatar applications, and video world models.</span></div>
-                  <div><strong>Recent focus</strong><span>Video World Model: Long-context generation, memory-consistent video, efficient autoregressive synthesis, interactive control and multi-player world model.</span></div>
+                  <div><strong>Research Interest</strong><span>Developing foundation models for video generation, visual effects, and digital avatar applications. I work toward models that can generate, edit, and reason over dynamic visual content, building on years of experience in both large-scale generative modeling and downstream creative applications.</span></div>
+                  <div><strong>Recent focus</strong><span>Generative video systems that connect large-scale model priors with controllable creative workflows, from editing and VFX to digital avatar applications.</span></div>
                 </div>
-                <p class="lead">I care about models that do more than generate plausible pixels. They should expose the right control surface for artists, users, agents, while capturing the underlying physics, causal structure, and dynamics of the world to enable controllable and consistent world models.</p>
               </div>
               <div class="signal-panel">
-                <div class="metric-row"><span>2021-now</span><strong>Adobe Research</strong></div>
-                <div class="metric-row"><span>2016-2021</span><strong>UMass Amherst<br><em>advised by Evangelos Kalogerakis</em></strong></div>
-                <div class="metric-row"><span>2009-2016</span><strong>BE at SJTU, MS at Georgia Tech</strong></div>
+                <div class="metric-row experience-row">
+                  <span>2021-now</span>
+                  <div>
+                    <strong>Adobe Research</strong>
+                    <ul>
+                      <li>Co-founded Adobe video generation model research prototype, later transferred into Adobe Firefly Video.</li>
+                      <li>Led video model R&amp;D for digital avatars, including talking avatars, lip-sync, and pose transfer.</li>
+                      <li>Led video effects R&amp;D for spatial/temporal super-resolution and generative blending.</li>
+                      <li>Mentored 20+ interns on top-tier publications in CVPR, ICCV, ECCV, SIGGRAPH, and NeurIPS.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="metric-row experience-row">
+                  <span>2016-2021</span>
+                  <div>
+                    <strong>UMass Amherst<br><em>advised by Evangelos Kalogerakis</em></strong>
+                    <ul>
+                      <li>Research on audio-driven character speech animation.</li>
+                      <li>Character rigging and skinning.</li>
+                      <li>3D scene generation.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -203,31 +222,6 @@
                 <div class="dh-tile draggable-item" data-item-id="video-reenact" data-x="1" data-y="51" data-w="38" data-h="20" data-z="3" data-scale="1" data-rotate="0"><img src="assets/video_reenact.png" alt="Video gesture reenactment teaser"></div>
                 <div class="dh-tile draggable-item" data-item-id="rignet" data-x="1" data-y="73" data-w="46" data-h="21" data-z="2" data-scale="1" data-rotate="0"><img src="assets/rignet.png" alt="RigNet rigging teaser"></div>
                 <div class="dh-tile draggable-item" data-item-id="visemenet" data-x="49" data-y="69" data-w="50" data-h="25" data-z="1" data-scale="1" data-rotate="0"><img src="assets/visemenet.jpg" alt="VisemeNet facial animation teaser"></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="slide carry-forward-slide" data-section="Trajectory" data-title="Era 1 - Key Takeaways">
-            <div class="slide-inner">
-              <div class="section-heading carry-forward-heading">
-                <h2>What carried forward</h2>
-                <p>Specialist models taught me to turn domain knowledge into precise control; foundation models made that control general, emergent, and scalable.</p>
-              </div>
-              <div class="carry-forward-layout">
-                <div class="carry-forward-panel specialist">
-                  <span>Specialist era</span>
-                  <h3>Exploring every boundary of control</h3>
-                  <p>At the time, the hunger for fine-grained, expressive control created many beautiful research problems: visemes, expressions, pose, rigging, motion graphs, vector graphics, 3D avatars, and photorealistic video. As early as 2018, I was among the first to push audio-to-face animation across several of these output spaces.</p>
-                </div>
-                <div class="carry-forward-panel foundation">
-                  <span>Foundation-model era</span>
-                  <h3>From narrow frontiers to broad intelligence</h3>
-                  <p>Specialist models force you to inject knowledge and probe the edge of each direction. When large models arrived, the center of gravity changed: the model itself became a broad intelligent prior, spanning many general tasks and absorbing capabilities that previously required separate specialist systems.</p>
-                </div>
-              </div>
-              <div class="carry-forward-principle">
-                <span>Carry-forward principle</span>
-                <strong>Keep the obsession with controllability, but move the unit of research from a handcrafted specialist tool to a general generative prior that can be steered toward real creative work.</strong>
               </div>
             </div>
           </article>
@@ -377,6 +371,25 @@
             </div>
           </article>
 
+          <article class="slide worldcam-architecture-slide" data-section="WorldCam" data-title="Model Architecture">
+            <div class="slide-inner">
+              <div class="worldcam-architecture-layout">
+                <div class="worldcam-architecture-heading">
+                  <h2>Model Architecture</h2>
+                </div>
+                <div class="worldcam-architecture-frame">
+                  <img src="assets/worldcam_architecture_clean.png" alt="WorldCam model architecture diagram">
+                </div>
+                <div class="worldcam-architecture-text">
+                  <p class="caption">WorldCam converts user actions into camera poses in Lie algebra and conditions a progressive autoregressive video transformer on these camera poses for precise action control. Retrieved long-term memory latents and camera poses from the memory pool enforce 3D consistency of the generated world, while short-term memory with an attention sink stabilizes long-horizon generation.</p>
+                  <div class="summary-block">
+                    <p>The model needs both long-term and short-term memory; camera pose conditioning is the bridge that connects action control with memory-grounded 3D consistency.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <article class="slide worldcam-demo-slide" data-section="WorldCam" data-title="Precise Action Control over Long-Horizon Generation">
             <div class="slide-inner worldcam-demo-inner">
               <div class="worldcam-demo-heading">
@@ -397,84 +410,6 @@
               </div>
               <div class="worldcam-demo-frame">
                 <img src="assets/worldcam_3d_consistency_clean.gif" alt="WorldCam 3D world consistency over long-horizon generation">
-              </div>
-            </div>
-          </article>
-
-          <article class="slide worldcam-architecture-slide" data-section="WorldCam" data-title="Model Architecture">
-            <div class="slide-inner">
-              <div class="worldcam-architecture-layout">
-                <div class="worldcam-architecture-heading">
-                  <h2>Model Architecture</h2>
-                </div>
-                <div class="worldcam-architecture-frame">
-                  <img src="assets/worldcam_architecture_clean.png" alt="WorldCam model architecture diagram">
-                </div>
-                <div class="worldcam-architecture-text">
-                  <p class="caption">WorldCam converts user actions into camera poses in Lie algebra and conditions a progressive autoregressive video transformer on these camera poses for precise action control. Retrieved long-term memory latents and camera poses from the memory pool enforce 3D consistency of the generated world, while short-term memory with an attention sink stabilizes long-horizon generation.</p>
-                  <div class="summary-block">
-                    <p>The model needs both long-term and short-term memory; camera pose conditioning is the bridge that connects action control with memory-grounded 3D consistency.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="slide" data-section="WorldCam" data-title="WorldCam Contributions">
-            <div class="slide-inner">
-              <div class="section-heading">
-                <h2>WorldCam: key contribution</h2>
-                <p>Camera pose is elevated from metadata into the organizing representation for control, generation, and memory.</p>
-              </div>
-              <div class="diagram">
-                <div class="diagram-column">
-                  <div class="diagram-box small">Image / video context</div>
-                  <div class="diagram-box small amber">Camera pose</div>
-                  <div class="diagram-box small cyan">User action</div>
-                </div>
-                <div class="diagram-arrow"></div>
-                <div class="diagram-box center-box">
-                  <span>WorldCam</span>
-                  <strong>Autoregressive video world model</strong>
-                  <p>Generate the next view while grounding it in camera-aware geometry.</p>
-                </div>
-                <div class="diagram-arrow"></div>
-                <div class="diagram-column">
-                  <div class="diagram-box small">3D spatial memory</div>
-                  <div class="diagram-box small">Revisiting consistency</div>
-                  <div class="diagram-box small">Interactive rollout</div>
-                </div>
-              </div>
-              <div class="contribution-row">
-                <div><span>01</span><p>Unifies camera control and memory indexing.</p></div>
-                <div><span>02</span><p>Supports interactive autoregressive world exploration.</p></div>
-                <div><span>03</span><p>Makes 3D consistency a first-class evaluation target.</p></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="slide" data-section="WorldCam" data-title="WorldCam Insights">
-            <div class="slide-inner">
-              <div class="section-heading">
-                <h2>Three insights from WorldCam</h2>
-                <p>The paper is useful beyond one system because it reframes what a world-model interface should be.</p>
-              </div>
-              <div class="insight-grid three">
-                <div class="insight">
-                  <span>01</span>
-                  <h3>Action is not always semantic</h3>
-                  <p>For navigation worlds, camera pose is the most natural low-level action. It is precise, compositional, and geometric.</p>
-                </div>
-                <div class="insight">
-                  <span>02</span>
-                  <h3>Memory needs an address</h3>
-                  <p>Long context alone is not memory. A model needs a way to bind observations to locations and retrieve them later.</p>
-                </div>
-                <div class="insight">
-                  <span>03</span>
-                  <h3>World state is the missing middle</h3>
-                  <p>Video is the render. The research frontier is the latent state that persists underneath that render.</p>
-                </div>
               </div>
             </div>
           </article>
@@ -563,26 +498,40 @@
               <div class="active-work-grid">
                 <div class="active-work-card">
                   <div>
-                    <span>01</span>
-                    <h3>Latent state learning</h3>
+                    <div class="work-card-title">
+                      <span>01</span>
+                      <h3>Latent state learning</h3>
+                    </div>
                     <p>Use an encoder to learn compact world-state representations, turning raw memory retrieval into latent retrieval.</p>
                     <p>Current frame-based retrieval is often dominated by heuristic rules and can miss the flexible memory needed for the current query. A learned representation should make retrieval more compact, adaptive, and robust.</p>
                   </div>
-                  <div class="video-placeholder">
-                    <strong>Video placeholder</strong>
-                    <span>world-state compression / latent retrieval</span>
-                  </div>
+                  <figure class="active-work-media latent-learning-media">
+                    <div class="active-work-visual-pair">
+                      <img src="assets/yaw90_return_1.gif" alt="Turning camera pose generation with a consistent scene, sample one">
+                      <img src="assets/yaw90_return_2.gif" alt="Turning camera pose generation with a consistent scene, sample two">
+                    </div>
+                    <figcaption>Generated with turning camera poses while preserving a consistent scene.</figcaption>
+                  </figure>
                 </div>
                 <div class="active-work-card">
                   <div>
-                    <span>02</span>
-                    <h3>Multiplayer sync</h3>
-                    <p>Use a shared world state plus cross-player synchronization so multiple players see one consistent evolving world.</p>
-                    <p>The mechanism is designed to scale toward arbitrary numbers of players, views, and actions.</p>
+                    <div class="work-card-title">
+                      <span>02</span>
+                      <h3>Multiplayer sync</h3>
+                    </div>
+                    <p>Use a shared world state plus cross-player synchronization so multiple players see one consistent evolving world, scaling toward arbitrary numbers of players, views, and actions.</p>
                   </div>
-                  <figure class="active-work-media sync-media">
-                    <img src="assets/zun_multiplayer_sync.gif" alt="Multiplayer world-state synchronization demo">
-                    <figcaption>Generated video for 4 players with different camera trajectories viewing the same dynamic scene.</figcaption>
+                  <figure class="active-work-media sync-media sync-media-pair">
+                    <div class="active-work-visual-pair sync-visual-pair">
+                      <div class="media-tile primary-sync-tile">
+                        <img src="assets/zun_multiplayer_sync.gif" alt="Multiplayer world-state synchronization demo">
+                        <span>Generated video for 4 players with different camera trajectories<br>viewing the same dynamic scene.</span>
+                      </div>
+                      <div class="media-tile">
+                        <img src="assets/minecraft_2player_comparison.gif" alt="Two-player Minecraft interaction comparison with generated result and ground truth">
+                        <span>Top: generated 2-player interaction in Minecraft. Bottom: ground truth.</span>
+                      </div>
+                    </div>
                   </figure>
                 </div>
               </div>
@@ -617,12 +566,9 @@
                     <h3>External world host</h3>
                     <p>A 3D, game, or physics engine maintains geometry, physics, state, and metadata.</p>
                   </div>
-                  <div class="engine-stack-visual" aria-label="Example external engines">
-                    <div class="engine-cube">UE</div>
-                    <div class="engine-cube">Unity</div>
-                    <div class="engine-cube">Roblox</div>
-                    <div class="engine-cube">Omniverse</div>
-                  </div>
+                  <figure class="engine-stack-visual" aria-label="Example external world hosts">
+                    <img src="assets/engine_world_hosts_wide.png" alt="Roblox, Unreal Engine, Unity, and Minecraft as external world hosts">
+                  </figure>
                 </div>
 
                 <div class="state-flow-arrow" aria-hidden="true">↓</div>
@@ -653,13 +599,13 @@
                     <div class="realtime-metrics">
                       <div><strong>24+ FPS</strong><small>interactive target</small></div>
                       <div><strong>1-4 steps</strong><small>few-step sampler</small></div>
-                      <div><strong>closed loop</strong><small>action to pixels</small></div>
+                      <div><strong>closed loop</strong><small>low latency</small></div>
                     </div>
                   </article>
                   <article class="realtime-active-card">
                     <span>Active work</span>
                     <h3>Consistency distillation with quality regularization.</h3>
-                    <p>We are exploring consistency distillation to reduce sampling steps, while using DMD and GAN-style objectives to recover frame quality and avoid the soft or washed-out artifacts that pure consistency objectives can produce.</p>
+                    <p>We are exploring consistency distillation to reduce sampling steps, while using DMD and GAN-style objectives to recover frame quality.</p>
                     <div class="realtime-pipeline" aria-label="Realtime distillation pipeline">
                       <b>teacher trajectory</b>
                       <i></i>
@@ -667,7 +613,7 @@
                       <i></i>
                       <b>DMD / GAN quality</b>
                       <i></i>
-                      <b>few-step renderer</b>
+                      <b>few-step student</b>
                     </div>
                   </article>
                 </div>
@@ -675,12 +621,12 @@
                   <span>Reference papers</span>
                   <h3>Consistency and few-step generation stack</h3>
                   <ul class="realtime-paper-list">
+                    <li>CausVid, Self-Forcing, and Causal Forcing++</li>
                     <li>Consistency Models / Consistency Distillation</li>
                     <li>sCM: Scalable Continuous-Time Consistency Models</li>
                     <li>rCM: Regularized Consistency Models with DMD</li>
                     <li>DMD / DMD2</li>
-                    <li>CausVid, Self-Forcing, and Causal Forcing++</li>
-                    <li>ForgeWM, LongLive-2.0, and FlashDecoder</li>
+                    <li>LongLive-2.0 and FlashDecoder</li>
                   </ul>
                   <div class="realtime-figure-grid" aria-label="Reference paper visual motifs">
                     <figure class="paper-mini-figure consistency-figure">
@@ -732,112 +678,10 @@
               <h2>Thank you</h2>
               <p>Q&amp;A</p>
               <div class="closing-links">
-                <a href="https://yzhou359.github.io/">yzhou359.github.io</a>
+                <a href="https://yzhou359.github.io/">Yang's Homepage</a>
                 <a href="https://cvlab-kaist.github.io/WorldCam/">WorldCam project</a>
                 <a href="https://relic-worldmodel.github.io/">RELIC project</a>
               </div>
-              <details class="meta-toggle">
-                <summary>Meta Information</summary>
-                <div class="meta-content">
-                  <h3>Prompt Used To Produce The HTML</h3>
-                  <pre>#19-world-state-summary
-这里的图不需要边界.再多加一个图并排
-然后两个图下方加一行小字 figure credit to WorldKV and Gamma-World</pre>
-                  <h3>Directories Used During Generation</h3>
-                  <ul>
-                    <li>/Users/yazhou/Documents/codex_research_agent</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/assets</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/tmp</li>
-                    <li>/Users/yazhou/Downloads</li>
-                    <li>/Users/yazhou/.codex/generated_images/019ec016-3c94-7f43-9775-e7d6935e3d40</li>
-                  </ul>
-                  <h3>Code And File Inputs Used During Generation</h3>
-                  <ul>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/Yang_Zhou_Research_Interview_Deck.pptx</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/index.html</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/styles.css</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/script.js</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/index.html</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/styles.css</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/script.js</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_portrait.jpeg</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_digital_human.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_character_portrait.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_neon_street.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_architecture.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_editing.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_timeline_video_vfx.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_timeline_world_model.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/skel-free_motion_trans.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/makeittalk_new.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/grip.png</li>
-                    <li>/Users/yazhou/Downloads/kineto.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/kineto.gif</li>
-                    <li>/Users/yazhou/Downloads/worldcam1.gif</li>
-                    <li>/Users/yazhou/Downloads/worldcam2.gif</li>
-                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-3c2f0e90-1a9d-4df1-a673-11b7ca8235c3.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_action_control.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_3d_consistency.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_architecture.png</li>
-                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-1212d491-9f8d-40e3-85a5-1a915afdcc49.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_architecture_clean.png</li>
-                    <li>/Users/yazhou/Downloads/video_5.mp4</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_video5.gif</li>
-                    <li>/Users/yazhou/Downloads/worldcam11.gif</li>
-                    <li>/Users/yazhou/Downloads/worldcam22.gif</li>
-                    <li>/Users/yazhou/Downloads/zun.mp4</li>
-                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-a54a67b1-7bee-421b-893c-982f9523778b.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_action_control_clean.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_3d_consistency_clean.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/zun_multiplayer_sync.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/world_state_memory_retrieval.png</li>
-                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-df812026-3dd6-4c10-a2cd-32d4b540036a.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldkv_sparse_hub_attention.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/template-manifest.json</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/template-inspect.ndjson</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/contact-sheet.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/media-contact-sheet.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image1.jpeg</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image2.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image3.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image4.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image5.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image6.gif</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image7.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image8.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/template-manifest.json</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/template-inspect.ndjson</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-13.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-14.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-15.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-16.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-17.png</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/tmp/homepage.html</li>
-                    <li>/Users/yazhou/Downloads/CV_YANG_ZHOU_202605.pdf</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/AGENTS.md</li>
-                    <li>/Users/yazhou/Documents/codex_research_agent/MEMORY.md</li>
-                    <li>/Users/yazhou/.codex/AGENTS.md</li>
-                    <li>/Users/yazhou/.codex/PROGRESS.md</li>
-                    <li>/Users/yazhou/.codex/PROGRESSES/research_agent_PROGRESS.md</li>
-                    <li>/Users/yazhou/.codex/doc/html-formatting.md</li>
-                    <li>/Users/yazhou/.codex/doc/s3-ops.md</li>
-                    <li>/Users/yazhou/.codex/plugins/cache/openai-primary-runtime/presentations/26.614.11602/skills/presentations/SKILL.md</li>
-                    <li>/Users/yazhou/.codex/plugins/cache/openai-primary-runtime/presentations/26.614.11602/skills/presentations/scripts/inspect_template_deck.mjs</li>
-                    <li>/Users/yazhou/.codex/plugins/cache/openai-curated/build-web-apps/c6ea566d/skills/frontend-testing-debugging/SKILL.md</li>
-                    <li>/Users/yazhou/.codex/plugins/cache/openai-bundled/browser/26.608.12217/skills/control-in-app-browser/SKILL.md</li>
-                    <li>/Users/yazhou/.codex/generated_images/019ec016-3c94-7f43-9775-e7d6935e3d40/ig_0ef9ac96e79684a1016a2d182029cc819aa60b61e6e2616117.png</li>
-                  </ul>
-                </div>
-              </details>
             </div>
           </article>
         </div>
@@ -861,6 +705,6 @@
         <div class="overview-grid" id="overviewGrid"></div>
       </div>
     </main>
-    <script src="script.js?v=20260616-world-state-credit-v1"></script>
+    <script src="script.js?v=20260616-engine-host-wide-v1"></script>
   </body>
 </html>
