@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yang Zhou - Research Interview Deck</title>
+    <meta
+      name="description"
+      content="Interactive presentation deck introducing Yang Zhou's research trajectory, selected work, WorldCam, and future work on video world models."
+    >
+    <link rel="preload" href="assets/ppt_cover_portrait.jpeg" as="image">
+    <link rel="stylesheet" href="styles.css?v=20260616-world-state-credit-v1">
+  </head>
+  <body>
+    <main class="deck" aria-label="Yang Zhou research interview presentation">
+      <aside class="rail" aria-label="Presentation navigation">
+        <div class="rail-brand">
+          <span>Adobe</span>
+          <span>Research</span>
+        </div>
+        <nav class="rail-nav" aria-label="Slide sections">
+          <button class="rail-item is-active" data-jump="0">
+            <span>01</span>
+            <small>Opening</small>
+          </button>
+          <button class="rail-item" data-jump="3">
+            <span>02</span>
+            <small>Trajectory</small>
+          </button>
+          <button class="rail-item" data-jump="9">
+            <span>03</span>
+            <small>WorldCam</small>
+          </button>
+          <button class="rail-item" data-jump="15">
+            <span>04</span>
+            <small>Future</small>
+          </button>
+          <button class="rail-item" data-jump="19">
+            <span>05</span>
+            <small>Vision</small>
+          </button>
+          <button class="rail-item" data-jump="20">
+            <span>06</span>
+            <small>Q&amp;A</small>
+          </button>
+        </nav>
+        <div class="rail-actions">
+          <button class="icon-button" id="overviewButton" aria-label="Open slide overview" title="Slide overview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6.5v5H4v-5Zm9.5 0H20v5h-6.5v-5ZM4 13.5h6.5v5H4v-5Zm9.5 0H20v5h-6.5v-5Z"/></svg>
+          </button>
+          <a class="icon-button" href="https://yzhou359.github.io/" aria-label="Open homepage" title="Homepage">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.7 12 4l8 6.7v8.8a.5.5 0 0 1-.5.5h-5v-6h-5v6h-5a.5.5 0 0 1-.5-.5v-8.8Z"/></svg>
+          </a>
+        </div>
+        <div class="rail-count"><span id="currentSlide">1</span><span>/</span><span id="totalSlides">21</span></div>
+      </aside>
+
+      <section class="stage" aria-live="polite">
+        <div class="slides" id="slides">
+          <article class="slide title-slide ppt-synced-cover" data-section="Opening" data-title="Yang Zhou">
+            <div class="slide-inner title-grid ppt-title-grid">
+              <div class="title-copy">
+                <div class="accent-line"></div>
+                <h1>Yang Zhou</h1>
+                <p class="role">Senior Research Scientist<br>Adobe Research</p>
+                <ul class="keyword-stack">
+                  <li>Generative video</li>
+                  <li>Digital humans</li>
+                  <li>Video world models</li>
+                </ul>
+                <p class="takeaway">Building controllable models for dynamic visual worlds: from faces and characters, to video generation, to interactive world models.</p>
+              </div>
+              <div class="hero-composite ppt-cover-collage" aria-label="Research media collage from the edited PowerPoint">
+                <div class="collage-plane"></div>
+                <div class="collage-frame portrait-frame ppt-portrait"><img src="assets/ppt_cover_portrait.jpeg" alt="Yang Zhou portrait"></div>
+                <div class="collage-frame ppt-architecture"><img src="assets/ppt_cover_architecture.gif" alt="Interactive world navigation animation"></div>
+                <div class="collage-frame ppt-editing"><img src="assets/ppt_cover_editing.gif" alt="Generative editing animation"></div>
+                <div class="collage-frame ppt-human"><img src="assets/ppt_cover_digital_human.gif" alt="Digital human animation"></div>
+                <div class="collage-frame ppt-neon"><img src="assets/ppt_cover_neon_street.gif" alt="Generated city scene animation"></div>
+                <div class="collage-frame ppt-character"><img src="assets/ppt_cover_character_portrait.gif" alt="Character and portrait animation"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide" data-section="Opening" data-title="Research Identity">
+            <div class="slide-inner split identity-ppt-sync">
+              <div class="copy-block">
+                <div class="eyeless-label">Identity</div>
+                <h2>Beyond Pixel Generation</h2>
+                <div class="claim-list labeled-claims">
+                  <div><strong>Research Interest</strong><span>Working on Generative AI for videos, including video generation, VFX, digital avatar applications, and video world models.</span></div>
+                  <div><strong>Recent focus</strong><span>Video World Model: Long-context generation, memory-consistent video, efficient autoregressive synthesis, interactive control and multi-player world model.</span></div>
+                </div>
+                <p class="lead">I care about models that do more than generate plausible pixels. They should expose the right control surface for artists, users, agents, while capturing the underlying physics, causal structure, and dynamics of the world to enable controllable and consistent world models.</p>
+              </div>
+              <div class="signal-panel">
+                <div class="metric-row"><span>2021-now</span><strong>Adobe Research</strong></div>
+                <div class="metric-row"><span>2016-2021</span><strong>UMass Amherst<br><em>advised by Evangelos Kalogerakis</em></strong></div>
+                <div class="metric-row"><span>2009-2016</span><strong>BE at SJTU, MS at Georgia Tech</strong></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide" data-section="Opening" data-title="Talk Map">
+            <div class="slide-inner">
+              <div class="section-heading">
+                <h2>Today's outline</h2>
+                <p>This talk is organized into four parts: digital humans, video foundation models and applications, video world models, and future bets.</p>
+              </div>
+              <div class="map-grid">
+                <div class="map-card">
+                  <span>1</span>
+                  <h3>Digital human</h3>
+                  <p>Speech, pose, expression, rigging, and animation as controllable human motion.</p>
+                </div>
+                <div class="map-card">
+                  <span>2</span>
+                  <h3>Video foundation + VFX</h3>
+                  <p>Generative video foundation model and its adaption into editing, super-resolution, inbetweening, customization, and 3D.</p>
+                </div>
+                <div class="map-card">
+                  <span>3</span>
+                  <h3>Video world model</h3>
+                  <p>Autoregressive video generation that can interact in real time, remember the past, revisit states, take actions, and maintain spatial coherence.</p>
+                </div>
+                <div class="map-card">
+                  <span>4</span>
+                  <h3>Future directions</h3>
+                  <p>Drifting, action control, world state, and real-time distillation as the next stage of video world models.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide timeline-slide" data-section="Trajectory" data-title="Research Era Timeline">
+            <div class="slide-inner">
+              <div class="section-heading">
+                <h2>Research era timeline</h2>
+                <p class="timeline-thesis">Specialist models -> foundation priors -> applied generation -> world models.</p>
+                <p class="timeline-note">My path started with small, specialist models for digital humans, then moved into the foundation-model era: embracing large generative priors and bringing them back into downstream creative applications. As that paradigm became increasingly established, world models felt like the missing piece, because they force the hardest open problems in generation to be solved together: real-time synthesis, physical and causal consistency, long-context reasoning, and persistent 3D memory or world state.</p>
+              </div>
+              <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="era era-one">
+                  <div class="era-media"><img src="assets/ppt_cover_digital_human.gif" alt="Digital human teaser animation"></div>
+                  <span>1.0</span>
+                  <h3>Digital humans</h3>
+                  <p>Pose, expression, lip-sync, rigging, and stylized 2D/3D character animation.</p>
+                  <strong>2018 - 2022</strong>
+                </div>
+                <div class="era era-two">
+                  <div class="era-media"><img src="assets/ppt_timeline_video_vfx.png" alt="Video foundation and VFX teaser"></div>
+                  <span>2.0</span>
+                  <h3>Video foundation models &amp; VFX</h3>
+                  <p>Large priors become tools for editing, customization, restoration, and creative production.</p>
+                  <strong>2023 - 2025</strong>
+                </div>
+                <div class="era era-three">
+                  <div class="era-media"><img src="assets/ppt_timeline_world_model.png" alt="World model teaser"></div>
+                  <span>3.0</span>
+                  <h3>Video world models</h3>
+                  <p>Generation becomes interactive simulation with memory, actions, and geometric control.</p>
+                  <strong>2024 - now</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide digital-human-slide" data-section="Trajectory" data-title="Digital Human">
+            <div class="slide-inner split digital-human-layout">
+              <div class="copy-block">
+                <div class="eyeless-label">Era 1.0</div>
+                <h2>Digital Human</h2>
+                <p class="lead">Various control and analysis problems over human faces, bodies, hands, and stylized characters.</p>
+                <div class="paper-list digital-human-papers">
+                  <div><span>SIGGRAPH 2018</span><strong>VisemeNet</strong><p>Audio-driven, animator-centric speech animation.</p></div>
+                  <div><span>SIGGRAPH Asia 2020</span><strong>MakeItTalk</strong><p>Speaker-aware talking-head animation.</p></div>
+                  <div><span>ECCV 2022</span><strong>Skeleton-free Pose Transfer</strong><p>Motion transfer for stylized 3D characters without requiring a shared skeleton.</p></div>
+                  <div><span>ECCV 2022</span><strong>Learning Visibility</strong><p>Robust dense human body estimation through visibility reasoning.</p></div>
+                  <div><span>CVPR 2022</span><strong>Video Motion Graphs</strong><p>Audio-driven gesture reenactment.</p></div>
+                  <div><span>SIGGRAPH 2020 / 2022</span><strong>RigNet + MoRig</strong><p>Rigging and motion-aware character structure.</p></div>
+                </div>
+              </div>
+              <div class="digital-human-gallery draggable-canvas" data-layout-key="digital-human">
+                <div class="layout-controls" aria-label="Digital human layout controls">
+                  <div class="transform-controls" aria-label="Selected image transform controls">
+                    <label class="range-control">
+                      <span>Scale</span>
+                      <input class="layout-scale" type="range" min="0.2" max="3" step="0.01" value="1" aria-label="Scale selected image">
+                    </label>
+                    <label class="range-control">
+                      <span>Rotate</span>
+                      <input class="layout-rotate" type="range" min="-180" max="180" step="1" value="0" aria-label="Rotate selected image">
+                    </label>
+                  </div>
+                  <button class="layout-button layout-save" type="button">Save layout</button>
+                  <button class="layout-button layout-reset" type="button">Reset</button>
+                  <span class="layout-status" aria-live="polite"></span>
+                </div>
+                <div class="dh-tile wide draggable-item" data-item-id="makeittalk" data-x="1" data-y="6" data-w="38" data-h="42" data-z="6" data-scale="1" data-rotate="0"><img src="assets/makeittalk_new.png" alt="MakeItTalk audio-driven talking-head animation teaser"></div>
+                <div class="dh-tile draggable-item" data-item-id="skel-free" data-x="40.5" data-y="6" data-w="58.5" data-h="28" data-z="5" data-scale="1" data-rotate="0"><img src="assets/skel-free_motion_trans.png" alt="Skeleton-free pose transfer for stylized 3D characters teaser"></div>
+                <div class="dh-tile draggable-item" data-item-id="grip" data-x="40.5" data-y="36" data-w="58.5" data-h="31" data-z="4" data-scale="1" data-rotate="0"><img src="assets/grip.png" alt="GRIP hand and object interaction pose generation teaser"></div>
+                <div class="dh-tile draggable-item" data-item-id="video-reenact" data-x="1" data-y="51" data-w="38" data-h="20" data-z="3" data-scale="1" data-rotate="0"><img src="assets/video_reenact.png" alt="Video gesture reenactment teaser"></div>
+                <div class="dh-tile draggable-item" data-item-id="rignet" data-x="1" data-y="73" data-w="46" data-h="21" data-z="2" data-scale="1" data-rotate="0"><img src="assets/rignet.png" alt="RigNet rigging teaser"></div>
+                <div class="dh-tile draggable-item" data-item-id="visemenet" data-x="49" data-y="69" data-w="50" data-h="25" data-z="1" data-scale="1" data-rotate="0"><img src="assets/visemenet.jpg" alt="VisemeNet facial animation teaser"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide carry-forward-slide" data-section="Trajectory" data-title="Era 1 - Key Takeaways">
+            <div class="slide-inner">
+              <div class="section-heading carry-forward-heading">
+                <h2>What carried forward</h2>
+                <p>Specialist models taught me to turn domain knowledge into precise control; foundation models made that control general, emergent, and scalable.</p>
+              </div>
+              <div class="carry-forward-layout">
+                <div class="carry-forward-panel specialist">
+                  <span>Specialist era</span>
+                  <h3>Exploring every boundary of control</h3>
+                  <p>At the time, the hunger for fine-grained, expressive control created many beautiful research problems: visemes, expressions, pose, rigging, motion graphs, vector graphics, 3D avatars, and photorealistic video. As early as 2018, I was among the first to push audio-to-face animation across several of these output spaces.</p>
+                </div>
+                <div class="carry-forward-panel foundation">
+                  <span>Foundation-model era</span>
+                  <h3>From narrow frontiers to broad intelligence</h3>
+                  <p>Specialist models force you to inject knowledge and probe the edge of each direction. When large models arrived, the center of gravity changed: the model itself became a broad intelligent prior, spanning many general tasks and absorbing capabilities that previously required separate specialist systems.</p>
+                </div>
+              </div>
+              <div class="carry-forward-principle">
+                <span>Carry-forward principle</span>
+                <strong>Keep the obsession with controllability, but move the unit of research from a handcrafted specialist tool to a general generative prior that can be steered toward real creative work.</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide foundation-era-slide" data-section="Trajectory" data-title="Foundation Models">
+            <div class="slide-inner foundation-era-v2">
+              <div class="foundation-era-heading">
+                <div class="eyeless-label">Era 2.0</div>
+                <h2>Foundation Models</h2>
+                <p>After the specialist-model era, I moved into large generative priors across video and 3D: building early product-facing research prototypes, studying video foundation-model training, and exploring 3D generation as a foundation problem.</p>
+              </div>
+              <div class="foundation-showcase">
+                <div class="foundation-card kineto-card">
+                  <img src="assets/kineto.gif" alt="Kineto / Firefly Video research prototype teaser">
+                  <div>
+                    <span>Adobe research prototype</span>
+                    <h3>Kineto/Firefly Video</h3>
+                    <p>Co-founded an early Adobe video generation research prototype. We were among the first Adobe groups to push video generation seriously, and the success of that prototype helped open the path toward Adobe Firefly Video.</p>
+                  </div>
+                </div>
+                <div class="foundation-card">
+                  <img src="assets/harivo.gif" alt="HARIVO teaser">
+                  <div>
+                    <span>ECCV 2024</span>
+                    <h3>HARIVO</h3>
+                    <p>Video foundation model research: harnessing image generative priors for video.</p>
+                  </div>
+                </div>
+                <div class="foundation-card">
+                  <img src="assets/lrm.gif" alt="LRM teaser">
+                  <div>
+                    <span>ICLR 2024</span>
+                    <h3>LRM</h3>
+                    <p>Large reconstruction model for single-image-to-3D foundation generation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide application-prior-slide" data-section="Trajectory" data-title="Foundation Priors for Creative Applications">
+            <div class="slide-inner">
+              <div class="section-heading application-prior-heading">
+                <div class="eyeless-label">Era 2.1</div>
+                <h2>Foundation Priors for Creative Applications</h2>
+                <p>Once foundation models became strong enough, the next question became how to use their priors to solve precise creative tasks: digital humans, low-level video quality, generative blending, and customization.</p>
+              </div>
+              <div class="application-prior-grid">
+                <div class="application-card">
+                  <img src="assets/visual_persona.png" alt="Visual Persona teaser">
+                  <div>
+                    <span>Digital human</span>
+                    <h3>Identity and persona as controllable interfaces</h3>
+                    <p>Foundation priors make human identity, body, clothing, and pose easier to edit without rebuilding the whole specialist stack.</p>
+                  </div>
+                </div>
+                <div class="application-card">
+                  <img src="assets/videogigagan.gif" alt="VideoGigaGAN teaser">
+                  <div>
+                    <span>Spatial / temporal SR</span>
+                    <h3>Low-level video quality with generative detail</h3>
+                    <p>Use large priors to restore texture and temporal consistency instead of treating super-resolution as a purely local signal problem.</p>
+                  </div>
+                </div>
+                <div class="application-card">
+                  <img src="assets/multicoin.png" alt="MultiCOIN teaser">
+                  <div>
+                    <span>Generative blending</span>
+                    <h3>Video inbetweening and controllable transition</h3>
+                    <p>Blend controls, semantics, and temporal priors so generated motion feels continuous rather than stitched.</p>
+                  </div>
+                </div>
+                <div class="application-card">
+                  <img src="assets/customize-a-video.gif" alt="Customize-a-Video teaser">
+                  <div>
+                    <span>Customization</span>
+                    <h3>Personalizing large video priors</h3>
+                    <p>Adapt a general model to a user-specified subject, motion, or style while preserving the breadth of the foundation prior.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide world-model-slide" data-section="Trajectory" data-title="World Model">
+            <div class="slide-inner split world-model-layout">
+              <div class="copy-block">
+                <div class="eyeless-label">Era 3.0</div>
+                <h2>World Model</h2>
+                <p class="lead">After foundation models pushed generation quality and content coverage forward, control exposed the next bottleneck: long video generation that stays coherent as users act, revisit, and explore.</p>
+                <p class="world-model-thesis">My video world model journey started from long video generation, then progressively added controllable action, spatial memory, and real-time streaming.</p>
+                <div class="world-model-stack">
+                  <div><span>01</span><strong>Long horizon</strong><p>Extend video diffusion from short clips into sustained generation.</p></div>
+                  <div><span>02</span><strong>Control</strong><p>Turn user action into a stable interface for exploration.</p></div>
+                  <div><span>03</span><strong>Memory + realtime</strong><p>Keep world state consistent while streaming interactively.</p></div>
+                </div>
+              </div>
+              <div class="world-paper-grid">
+                <div class="world-paper-card">
+                  <img src="assets/desai_pavdm.gif" alt="Progressive Autoregressive Video Diffusion teaser">
+                  <div>
+                    <span>CVPRW 2025</span>
+                    <h3>Progressive Autoregressive Video Diffusion Models</h3>
+                    <p>Long video generation as the first step beyond short high-quality clips.</p>
+                  </div>
+                </div>
+                <div class="world-paper-card">
+                  <img src="assets/worldcam.gif" alt="WorldCam teaser">
+                  <div>
+                    <span>CVPRW 2026</span>
+                    <h3>WorldCam</h3>
+                    <p>Camera pose as the shared representation for action control and 3D memory.</p>
+                  </div>
+                </div>
+                <div class="world-paper-card">
+                  <img src="assets/relic.gif" alt="RELIC teaser">
+                  <div>
+                    <span>arXiv 2025</span>
+                    <h3>RELIC</h3>
+                    <p>Interactive video world model with long-horizon memory and real-time streaming.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide worldcam-slide worldcam-deep-dive-slide" data-section="WorldCam" data-title="WorldCam">
+            <div class="slide-inner split">
+              <div class="copy-block">
+                <div class="eyeless-label">WorldCam</div>
+                <h2>WorldCam</h2>
+                <p class="motivation-kicker">Motivation</p>
+                <p class="lead">WorldCam is built around two requirements for interactive video worlds: <span class="text-highlight">more precise control</span> and <span class="text-highlight">3D world consistency</span>.</p>
+                <div class="problem-stack worldcam-motivation-stack">
+                  <div><span>Control</span><p>Users need a precise, continuous way to specify how the camera moves through a generated world.</p></div>
+                  <div><span>Consistency</span><p>The world should remain spatially coherent when the camera moves, revisits, and reveals new regions.</p></div>
+                  <div><span>Unified rep.</span><p>Through experiments, we found camera pose can serve as the unified representation for both motivations.</p></div>
+                </div>
+              </div>
+              <div class="worldcam-card worldcam-deep-gif">
+                <img src="assets/worldcam_video5.gif" alt="WorldCam interactive camera control animation">
+                <div class="caption-row">
+                  <span>Camera pose for control + 3D consistency</span>
+                  <span>CVPRW 2026</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide worldcam-demo-slide" data-section="WorldCam" data-title="Precise Action Control over Long-Horizon Generation">
+            <div class="slide-inner worldcam-demo-inner">
+              <div class="worldcam-demo-heading">
+                <h2>Precise Action Control over Long-Horizon Generation</h2>
+                <p>WorldCam enables precise action control through complex, entangled discrete keyboard and continuous mouse inputs.</p>
+              </div>
+              <div class="worldcam-demo-frame">
+                <img src="assets/worldcam_action_control_clean.gif" alt="WorldCam precise action control over long-horizon generation">
+              </div>
+            </div>
+          </article>
+
+          <article class="slide worldcam-demo-slide" data-section="WorldCam" data-title="3D World Consistency over Long-Horizon Generation">
+            <div class="slide-inner worldcam-demo-inner">
+              <div class="worldcam-demo-heading">
+                <h2>3D World Consistency over Long-Horizon Generation</h2>
+                <p>WorldCam preserves the underlying 3D scene structure during long-horizon rollouts, so when an agent revisits the same location from the same view angle, the scene remains recognizable and spatially consistent.</p>
+              </div>
+              <div class="worldcam-demo-frame">
+                <img src="assets/worldcam_3d_consistency_clean.gif" alt="WorldCam 3D world consistency over long-horizon generation">
+              </div>
+            </div>
+          </article>
+
+          <article class="slide worldcam-architecture-slide" data-section="WorldCam" data-title="Model Architecture">
+            <div class="slide-inner">
+              <div class="worldcam-architecture-layout">
+                <div class="worldcam-architecture-heading">
+                  <h2>Model Architecture</h2>
+                </div>
+                <div class="worldcam-architecture-frame">
+                  <img src="assets/worldcam_architecture_clean.png" alt="WorldCam model architecture diagram">
+                </div>
+                <div class="worldcam-architecture-text">
+                  <p class="caption">WorldCam converts user actions into camera poses in Lie algebra and conditions a progressive autoregressive video transformer on these camera poses for precise action control. Retrieved long-term memory latents and camera poses from the memory pool enforce 3D consistency of the generated world, while short-term memory with an attention sink stabilizes long-horizon generation.</p>
+                  <div class="summary-block">
+                    <p>The model needs both long-term and short-term memory; camera pose conditioning is the bridge that connects action control with memory-grounded 3D consistency.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide" data-section="WorldCam" data-title="WorldCam Contributions">
+            <div class="slide-inner">
+              <div class="section-heading">
+                <h2>WorldCam: key contribution</h2>
+                <p>Camera pose is elevated from metadata into the organizing representation for control, generation, and memory.</p>
+              </div>
+              <div class="diagram">
+                <div class="diagram-column">
+                  <div class="diagram-box small">Image / video context</div>
+                  <div class="diagram-box small amber">Camera pose</div>
+                  <div class="diagram-box small cyan">User action</div>
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="diagram-box center-box">
+                  <span>WorldCam</span>
+                  <strong>Autoregressive video world model</strong>
+                  <p>Generate the next view while grounding it in camera-aware geometry.</p>
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="diagram-column">
+                  <div class="diagram-box small">3D spatial memory</div>
+                  <div class="diagram-box small">Revisiting consistency</div>
+                  <div class="diagram-box small">Interactive rollout</div>
+                </div>
+              </div>
+              <div class="contribution-row">
+                <div><span>01</span><p>Unifies camera control and memory indexing.</p></div>
+                <div><span>02</span><p>Supports interactive autoregressive world exploration.</p></div>
+                <div><span>03</span><p>Makes 3D consistency a first-class evaluation target.</p></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide" data-section="WorldCam" data-title="WorldCam Insights">
+            <div class="slide-inner">
+              <div class="section-heading">
+                <h2>Three insights from WorldCam</h2>
+                <p>The paper is useful beyond one system because it reframes what a world-model interface should be.</p>
+              </div>
+              <div class="insight-grid three">
+                <div class="insight">
+                  <span>01</span>
+                  <h3>Action is not always semantic</h3>
+                  <p>For navigation worlds, camera pose is the most natural low-level action. It is precise, compositional, and geometric.</p>
+                </div>
+                <div class="insight">
+                  <span>02</span>
+                  <h3>Memory needs an address</h3>
+                  <p>Long context alone is not memory. A model needs a way to bind observations to locations and retrieve them later.</p>
+                </div>
+                <div class="insight">
+                  <span>03</span>
+                  <h3>World state is the missing middle</h3>
+                  <p>Video is the render. The research frontier is the latent state that persists underneath that render.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide problem-landscape-slide" data-section="Future" data-title="Future Work Problems">
+            <div class="slide-inner">
+              <div class="section-heading">
+                <h2>Future directions</h2>
+                <p>Across my world-model work and other concurrent efforts in the field, the next stage is <span class="text-highlight">not one algorithm</span>, but a coupled stack where stability, control, state, and speed all have to hold at once.</p>
+              </div>
+              <div class="problem-landscape">
+                <div class="problem-tile drift">
+                  <span>Future direction 1</span>
+                  <strong>Drifting</strong>
+                  <p>We have made progress on error accumulation, identity drift, and broken revisiting, but it remains a stress test for long horizons.</p>
+                </div>
+                <div class="problem-tile action">
+                  <span>Future direction 2</span>
+                  <strong>Action control</strong>
+                  <p>WorldCam moves this forward with precise camera-pose control; the next challenge is broader action interfaces.</p>
+                </div>
+                <div class="problem-core future-direction-highlight">
+                  <span>Future direction 3</span>
+                  <h3>World state</h3>
+                  <p>A representation that records what happened, what changed, and what can be revisited later.</p>
+                </div>
+                <div class="problem-tile realtime future-direction-highlight">
+                  <span>Future direction 4</span>
+                  <strong>Realtime distillation</strong>
+                  <p>Turn high-quality world generation into a true interactive system with end-to-end low latency.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide active-bet-slide world-state-slide" data-section="Future" data-title="World State">
+            <div class="slide-inner split active-bet-layout">
+              <div class="copy-block">
+                <div class="eyeless-label">Active focus</div>
+                <h2>World State</h2>
+                <p class="lead">World state is the representation that remembers what happened in the world and makes revisiting possible.</p>
+                <div class="claim-list bet-claims">
+                  <article class="state-bank-evolution">
+                    <strong>State bank</strong>
+                    <div class="state-bank-flow">
+                      <section>
+                        <span>Current work</span>
+                        <p>Mostly store camera geo locations, view angles, POV, and compact appearance cues such as CLIP embeddings.</p>
+                      </section>
+                      <section>
+                        <span>Future state</span>
+                        <p>Richer state needs scene, object, actor, event, and camera-indexed memories.</p>
+                      </section>
+                    </div>
+                  </article>
+                  <article class="state-updater-claim">
+                    <strong>Updater</strong>
+                    <p>World state constantly evolves. It is not only spatial, but temporal: register state to locations while updating how those states evolve over time.</p>
+                  </article>
+                </div>
+              </div>
+              <div class="state-machine state-architecture" aria-label="World state architecture">
+                <div class="state-grid-lines" aria-hidden="true"></div>
+                <div class="state-pill observation"><span>read</span>Observation</div>
+                <div class="state-pill updater"><span>write</span>State updater</div>
+                <div class="state-pill render"><span>render</span>Next video chunk</div>
+                <div class="state-pill evaluator"><span>time</span>State history</div>
+                <div class="state-hub">
+                  <span>Spatial-temporal</span>
+                  <strong>World State</strong>
+                  <p>locations, events, actors, memory, evolving facts</p>
+                </div>
+                <div class="state-loop loop-a" aria-hidden="true"></div>
+                <div class="state-loop loop-b" aria-hidden="true"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide active-work-slide" data-section="Future" data-title="World State Active Work">
+            <div class="slide-inner">
+              <div class="section-heading active-work-heading">
+                <div class="eyeless-label">Active focus</div>
+                <h2>World State</h2>
+                <p>Two active internship projects are exploring world-state design: one learns compact memory for compression and registration, while the other builds shared state for multiplayer synchronization.</p>
+              </div>
+              <div class="active-work-grid">
+                <div class="active-work-card">
+                  <div>
+                    <span>01</span>
+                    <h3>Latent state learning</h3>
+                    <p>Use an encoder to learn compact world-state representations, turning raw memory retrieval into latent retrieval.</p>
+                    <p>Current frame-based retrieval is often dominated by heuristic rules and can miss the flexible memory needed for the current query. A learned representation should make retrieval more compact, adaptive, and robust.</p>
+                  </div>
+                  <div class="video-placeholder">
+                    <strong>Video placeholder</strong>
+                    <span>world-state compression / latent retrieval</span>
+                  </div>
+                </div>
+                <div class="active-work-card">
+                  <div>
+                    <span>02</span>
+                    <h3>Multiplayer sync</h3>
+                    <p>Use a shared world state plus cross-player synchronization so multiple players see one consistent evolving world.</p>
+                    <p>The mechanism is designed to scale toward arbitrary numbers of players, views, and actions.</p>
+                  </div>
+                  <figure class="active-work-media sync-media">
+                    <img src="assets/zun_multiplayer_sync.gif" alt="Multiplayer world-state synchronization demo">
+                    <figcaption>Generated video for 4 players with different camera trajectories viewing the same dynamic scene.</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide world-state-summary-slide" data-section="Future" data-title="World State Summary">
+            <div class="slide-inner">
+              <div class="section-heading world-state-summary-heading">
+                <h2>World state as memory</h2>
+                <p>World state is the map underneath a world model: it records what each place looks like, what happened there, what changed, and what should be remembered so long-horizon generation can revisit the same world with consistent place, event, and state.</p>
+              </div>
+              <div class="world-state-routing-layout">
+                <div class="state-mode-card learned-state-card">
+                  <div>
+                    <span>Learned state</span>
+                    <h3>Model-native memory</h3>
+                    <p>The world model generates, compresses, stores, and retrieves its own latent memory.</p>
+                  </div>
+                  <figure class="state-mode-figure learned-memory-figure">
+                    <div class="learned-memory-pair">
+                      <img src="assets/world_state_memory_retrieval.png" alt="Learned world-state memory compression and view-dependent retrieval">
+                      <img src="assets/worldkv_sparse_hub_attention.png" alt="Sparse hub attention mask for scalable multi-agent world memory">
+                    </div>
+                    <figcaption>Figure credit to WorldKV and Gamma-World.</figcaption>
+                  </figure>
+                </div>
+
+                <div class="state-mode-card engine-state-card">
+                  <div>
+                    <span>Engine-backed state</span>
+                    <h3>External world host</h3>
+                    <p>A 3D, game, or physics engine maintains geometry, physics, state, and metadata.</p>
+                  </div>
+                  <div class="engine-stack-visual" aria-label="Example external engines">
+                    <div class="engine-cube">UE</div>
+                    <div class="engine-cube">Unity</div>
+                    <div class="engine-cube">Roblox</div>
+                    <div class="engine-cube">Omniverse</div>
+                  </div>
+                </div>
+
+                <div class="state-flow-arrow" aria-hidden="true">↓</div>
+                <div class="state-flow-arrow" aria-hidden="true">↓</div>
+
+                <div class="video-renderer-card">
+                  <span>Video model renderer</span>
+                  <h3>Same renderer, different state source</h3>
+                  <p>Both world-state forms are viable: they differ in whether state is generated and remembered by the model itself, or maintained by an external engine. In both paths, video models render rich realistic or stylized worlds from that state.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide realtime-focus-slide" data-section="Future" data-title="Realtime Future Focus">
+            <div class="slide-inner">
+              <div class="section-heading realtime-focus-heading">
+                <div class="eyeless-label">Future focus</div>
+                <h2>Real-Time</h2>
+                <p>Real-time generation is the key that turns a video world model into an interactive world model: actions only feel grounded when perception, control, memory, and rendering close the loop at human interaction speed.</p>
+              </div>
+              <div class="realtime-focus-layout">
+                <div class="realtime-left-stack">
+                  <article class="realtime-core-card">
+                    <span>Why it matters</span>
+                    <h3>Interaction needs latency, not just quality.</h3>
+                    <p>A world model becomes useful when the user can act, observe, correct, and act again. That requires long-horizon consistency, controllability, and few-step rendering to work together.</p>
+                    <div class="realtime-metrics">
+                      <div><strong>24+ FPS</strong><small>interactive target</small></div>
+                      <div><strong>1-4 steps</strong><small>few-step sampler</small></div>
+                      <div><strong>closed loop</strong><small>action to pixels</small></div>
+                    </div>
+                  </article>
+                  <article class="realtime-active-card">
+                    <span>Active work</span>
+                    <h3>Consistency distillation with quality regularization.</h3>
+                    <p>We are exploring consistency distillation to reduce sampling steps, while using DMD and GAN-style objectives to recover frame quality and avoid the soft or washed-out artifacts that pure consistency objectives can produce.</p>
+                    <div class="realtime-pipeline" aria-label="Realtime distillation pipeline">
+                      <b>teacher trajectory</b>
+                      <i></i>
+                      <b>consistency map</b>
+                      <i></i>
+                      <b>DMD / GAN quality</b>
+                      <i></i>
+                      <b>few-step renderer</b>
+                    </div>
+                  </article>
+                </div>
+                <aside class="realtime-reference-wall">
+                  <span>Reference papers</span>
+                  <h3>Consistency and few-step generation stack</h3>
+                  <ul class="realtime-paper-list">
+                    <li>Consistency Models / Consistency Distillation</li>
+                    <li>sCM: Scalable Continuous-Time Consistency Models</li>
+                    <li>rCM: Regularized Consistency Models with DMD</li>
+                    <li>DMD / DMD2</li>
+                    <li>CausVid, Self-Forcing, and Causal Forcing++</li>
+                    <li>ForgeWM, LongLive-2.0, and FlashDecoder</li>
+                  </ul>
+                  <div class="realtime-figure-grid" aria-label="Reference paper visual motifs">
+                    <figure class="paper-mini-figure consistency-figure">
+                      <div class="figure-trajectory">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <figcaption>sCM / rCM: trajectory consistency</figcaption>
+                    </figure>
+                    <figure class="paper-mini-figure dmd-figure">
+                      <div class="figure-bars">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <figcaption>DMD / GAN: sharper frame quality</figcaption>
+                    </figure>
+                    <figure class="paper-mini-figure decoder-figure">
+                      <div class="figure-fps">
+                        <b>FPS</b><span>decode</span><span>render</span>
+                      </div>
+                      <figcaption>FlashDecoder: end-to-end latency</figcaption>
+                    </figure>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide vision-slide" data-section="Vision" data-title="Changing the World">
+            <div class="slide-inner">
+              <div class="vision-radiant">
+                <div class="vision-core">
+                  <div class="eyeless-label">Vision</div>
+                  <h2>From generative video to interactive worlds.</h2>
+                  <p class="lead">If video world models become stateful, controllable, consistent, and real-time, they stop being media generators and become simulation engines for creativity, games, training, robotics, and embodied AI.</p>
+                  <div class="vision-chain"><span>media generator</span><b></b><span>simulation engine</span></div>
+                </div>
+                <div class="vision-list vision-impact-grid">
+                  <div><span>Realtime editing</span><p>Creators can reshape persistent scenes through live, responsive edits instead of regenerating clips from scratch.</p></div>
+                  <div><span>Digital companion</span><p>Real-time talking characters can listen, respond, emote, and stay visually present during natural voice interaction.</p></div>
+                  <div><span>Games</span><p>Every player sees a coherent world that can evolve beyond hand-authored assets.</p></div>
+                  <div><span>Robotics</span><p>Robotics can use real-time world models for interactive action and planning, including world action models that predict consequences before acting.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide closing-slide" data-section="Q&A" data-title="Q&A">
+            <div class="slide-inner closing">
+              <div class="accent-line"></div>
+              <h2>Thank you</h2>
+              <p>Q&amp;A</p>
+              <div class="closing-links">
+                <a href="https://yzhou359.github.io/">yzhou359.github.io</a>
+                <a href="https://cvlab-kaist.github.io/WorldCam/">WorldCam project</a>
+                <a href="https://relic-worldmodel.github.io/">RELIC project</a>
+              </div>
+              <details class="meta-toggle">
+                <summary>Meta Information</summary>
+                <div class="meta-content">
+                  <h3>Prompt Used To Produce The HTML</h3>
+                  <pre>#19-world-state-summary
+这里的图不需要边界.再多加一个图并排
+然后两个图下方加一行小字 figure credit to WorldKV and Gamma-World</pre>
+                  <h3>Directories Used During Generation</h3>
+                  <ul>
+                    <li>/Users/yazhou/Documents/codex_research_agent</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/assets</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/tmp</li>
+                    <li>/Users/yazhou/Downloads</li>
+                    <li>/Users/yazhou/.codex/generated_images/019ec016-3c94-7f43-9775-e7d6935e3d40</li>
+                  </ul>
+                  <h3>Code And File Inputs Used During Generation</h3>
+                  <ul>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/Yang_Zhou_Research_Interview_Deck.pptx</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/index.html</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/styles.css</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck/script.js</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/index.html</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/styles.css</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/script.js</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_portrait.jpeg</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_digital_human.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_character_portrait.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_neon_street.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_architecture.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_cover_editing.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_timeline_video_vfx.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/ppt_timeline_world_model.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/skel-free_motion_trans.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/makeittalk_new.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/grip.png</li>
+                    <li>/Users/yazhou/Downloads/kineto.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/kineto.gif</li>
+                    <li>/Users/yazhou/Downloads/worldcam1.gif</li>
+                    <li>/Users/yazhou/Downloads/worldcam2.gif</li>
+                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-3c2f0e90-1a9d-4df1-a673-11b7ca8235c3.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_action_control.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_3d_consistency.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_architecture.png</li>
+                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-1212d491-9f8d-40e3-85a5-1a915afdcc49.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_architecture_clean.png</li>
+                    <li>/Users/yazhou/Downloads/video_5.mp4</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_video5.gif</li>
+                    <li>/Users/yazhou/Downloads/worldcam11.gif</li>
+                    <li>/Users/yazhou/Downloads/worldcam22.gif</li>
+                    <li>/Users/yazhou/Downloads/zun.mp4</li>
+                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-a54a67b1-7bee-421b-893c-982f9523778b.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_action_control_clean.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldcam_3d_consistency_clean.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/zun_multiplayer_sync.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/world_state_memory_retrieval.png</li>
+                    <li>/var/folders/8t/cmfwrp0d0t397_fj_vfs8xzh0000gr/T/codex-clipboard-df812026-3dd6-4c10-a2cd-32d4b540036a.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync/assets/worldkv_sparse_hub_attention.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/template-manifest.json</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/template-inspect.ndjson</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/contact-sheet.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/media-contact-sheet.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image1.jpeg</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image2.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image3.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image4.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image5.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image6.gif</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image7.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_ppt_sync_build/template-inspect/assets/ppt/media/image8.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/template-manifest.json</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/template-inspect.ndjson</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-13.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-14.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-15.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-16.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/output/research_interview_deck_layout_pass_build/template-inspect/source-slides/source-slide-17.png</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/tmp/homepage.html</li>
+                    <li>/Users/yazhou/Downloads/CV_YANG_ZHOU_202605.pdf</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/AGENTS.md</li>
+                    <li>/Users/yazhou/Documents/codex_research_agent/MEMORY.md</li>
+                    <li>/Users/yazhou/.codex/AGENTS.md</li>
+                    <li>/Users/yazhou/.codex/PROGRESS.md</li>
+                    <li>/Users/yazhou/.codex/PROGRESSES/research_agent_PROGRESS.md</li>
+                    <li>/Users/yazhou/.codex/doc/html-formatting.md</li>
+                    <li>/Users/yazhou/.codex/doc/s3-ops.md</li>
+                    <li>/Users/yazhou/.codex/plugins/cache/openai-primary-runtime/presentations/26.614.11602/skills/presentations/SKILL.md</li>
+                    <li>/Users/yazhou/.codex/plugins/cache/openai-primary-runtime/presentations/26.614.11602/skills/presentations/scripts/inspect_template_deck.mjs</li>
+                    <li>/Users/yazhou/.codex/plugins/cache/openai-curated/build-web-apps/c6ea566d/skills/frontend-testing-debugging/SKILL.md</li>
+                    <li>/Users/yazhou/.codex/plugins/cache/openai-bundled/browser/26.608.12217/skills/control-in-app-browser/SKILL.md</li>
+                    <li>/Users/yazhou/.codex/generated_images/019ec016-3c94-7f43-9775-e7d6935e3d40/ig_0ef9ac96e79684a1016a2d182029cc819aa60b61e6e2616117.png</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+
+        <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+        <button class="slide-control prev" id="prevButton" aria-label="Previous slide" title="Previous slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+        </button>
+        <button class="slide-control next" id="nextButton" aria-label="Next slide" title="Next slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </section>
+
+      <div class="overview" id="overview" aria-hidden="true">
+        <div class="overview-head">
+          <strong>Slide Overview</strong>
+          <button class="icon-button" id="closeOverview" aria-label="Close slide overview" title="Close">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <div class="overview-grid" id="overviewGrid"></div>
+      </div>
+    </main>
+    <script src="script.js?v=20260616-world-state-credit-v1"></script>
+  </body>
+</html>
